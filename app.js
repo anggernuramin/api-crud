@@ -4,6 +4,8 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
+require("dotenv").config();
+const { PORT } = process.env;
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var reviewRouter = require("./routes/review");
@@ -19,6 +21,9 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/review", reviewRouter);
+
+app.listen(PORT);
+console.log("server in port 3000");
 
 module.exports = app;
 // "start": "node ./bin/www",
